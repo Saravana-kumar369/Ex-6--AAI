@@ -18,11 +18,56 @@ Step 5:Iterate through each word in the tokenized text.<br>
 •	Print the unique sets of synonyms and antonyms.
 <H3>Program:</H3>
 
-Insert your code here
+```
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.corpus import wordnet
+
+# Download necessary NLTK resources
+nltk.download('punkt')
+nltk.download('wordnet')
+nltk.download('omw-1.4')
+# Ensure the specific English tagger is downloaded
+nltk.download('averaged_perceptron_tagger_eng')
+nltk.download('punkt_tab')
+
+# Input sentence
+sentence = input("Enter a sentence: ")
+
+# Tokenize and POS tagging
+words = word_tokenize(sentence)
+pos_tags = nltk.pos_tag(words)
+
+print("\nPart of Speech Tags:")
+for word, tag in pos_tags:
+    print(f"{word:<10} - {tag}")
+
+# Synonym and antonym collection
+synonyms = set()
+antonyms = set()
+
+for word in words:
+    # Wrap the synset loop in a try-except block to handle words not found in WordNet
+    try:
+        for syn in wordnet.synsets(word):
+            for lemma in syn.lemmas():
+                synonyms.add(lemma.name())  # Use set to avoid duplicates
+                for ant in lemma.antonyms():
+                    antonyms.add(ant.name())
+    except nltk.corpus.reader.wordnet.WordNetError:
+        # Optionally print a message or log that the word wasn't found in WordNet
+        pass
+
+
+print("\nSynonyms:", synonyms)
+print("Antonyms:", antonyms)
+
+```
 
 <H3>Output</H3>
+![image](https://github.com/user-attachments/assets/8403445a-84e5-4069-9956-4883b0dbcdfc)
 
-Show your results here
+
 
 <H3>Result:</H3>
 Thus ,the program to perform the Parts of Speech identification and Synonymis executed sucessfully.
