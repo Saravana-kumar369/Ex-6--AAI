@@ -65,7 +65,9 @@ print("Antonyms:", antonyms)
 ```
 
 <H3>Output</H3>
-![image](https://github.com/user-attachments/assets/8403445a-84e5-4069-9956-4883b0dbcdfc)
+
+![image](https://github.com/user-attachments/assets/6fea869d-13ae-4902-8ab5-49fb0e18e713)
+
 
 
 
